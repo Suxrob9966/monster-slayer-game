@@ -1,8 +1,25 @@
+function getRandomValue(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min; // formula of calculating rando number between 5 and 12
+}
+
 const app = Vue.createApp({
   data() {
-    return {};
+    return {
+      playerHealth: 100,
+      monsterHealth: 100,
+    };
   },
-  methods: {},
+  methods: {
+    attackMonster() {
+      const attackValue = getRandomValue(5, 12);
+      this.monsterHealth -= attackValue;
+      this.attackPlayer();
+    },
+    attackPlayer() {
+      const attackValue = getRandomValue(8, 15);
+      this.playerHealth -= attackValue;
+    },
+  },
 });
 
 app.mount('#game');
